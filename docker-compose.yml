@@ -1,0 +1,12 @@
+services:
+  reshacker:
+    build: .
+    container_name: reshacker
+    command: bash -c "wine /root/ResourceHacker.exe"
+    stdin_open: true
+    tty: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix  # For X11 GUI support
+      - ./data:/data                   # Shared data directory (on host: ./data)
